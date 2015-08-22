@@ -18,10 +18,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.sunshine.app.ForecastFragment">
+
     <ListView
         style="@style/ForecastListStyle"
         android:id="@+id/listview_forecast"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null" />
+
+    <!-- empty list -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listview_forecast_empty"
+        android:text="@string/empty_forecast_list"
+        android:gravity="center_horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin" />
 </FrameLayout>
