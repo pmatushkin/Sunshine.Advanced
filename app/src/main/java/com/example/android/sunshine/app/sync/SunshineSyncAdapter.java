@@ -102,8 +102,18 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
 
         try {
             // Construct the URL for the OpenWeatherMap query
-            // Possible parameters are avaiable at OWM's forecast API page, at
+            // Possible parameters are available at OWM's forecast API page, at
             // http://openweathermap.org/API#forecast
+
+//            // FORECAST_BASE_URL that will return an invalid result
+//            final String FORECAST_BASE_URL =
+//                    "http://www.google.com/?";
+
+//            //  FORECAST_BASE_URL that will return an empty result
+//            final String FORECAST_BASE_URL =
+//                    "http://www.google.com/ping?";
+
+            // a default FORECAST_BASE_URL
             final String FORECAST_BASE_URL =
                     "http://api.openweathermap.org/data/2.5/forecast/daily?";
             final String QUERY_PARAM = "q";
@@ -144,6 +154,7 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
 
             if (buffer.length() == 0) {
                 // Stream was empty.  No point in parsing.
+                setLocationStatus(getContext(), LOCATION_STATUS_SERVER_DOWN);
                 return;
             }
             forecastJsonStr = buffer.toString();
@@ -152,9 +163,11 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
             Log.e(LOG_TAG, "Error ", e);
             // If the code didn't successfully get the weather data, there's no point in attempting
             // to parse it.
+            setLocationStatus(getContext(), LOCATION_STATUS_SERVER_DOWN);
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
             e.printStackTrace();
+            setLocationStatus(getContext(), LOCATION_STATUS_SERVER_INVALID);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -316,10 +329,12 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
             }
 
             Log.d(LOG_TAG, "Sync Complete. " + cVVector.size() + " Inserted");
+            setLocationStatus(getContext(), LOCATION_STATUS_OK);
 
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
             e.printStackTrace();
+            setLocationStatus(getContext(), LOCATION_STATUS_SERVER_INVALID);
         }
     }
 
@@ -544,5 +559,18 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
 
     public static void initializeSyncAdapter(Context context) {
         getSyncAccount(context);
+    }
+
+    /**
+     * Sets the location status into shared preference. THis function should not be called from
+     * the UI thread because it uses commit to write to the shared preferences.
+     * @param c Context to gt the PreferenceManager from.
+     * @param locationStatus The IntDef value to set.
+     */
+    static private void setLocationStatus(Context c, @LocationStatus int locationStatus) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c);
+        SharedPreferences.Editor spe = sp.edit();
+        spe.putInt(c.getString(R.string.pref_location_status_key), locationStatus);
+        spe.commit();
     }
 }
