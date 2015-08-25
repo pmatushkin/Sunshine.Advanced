@@ -109,13 +109,13 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter {
 //            final String FORECAST_BASE_URL =
 //                    "http://www.google.com/?";
 
-//            //  FORECAST_BASE_URL that will return an empty result
-//            final String FORECAST_BASE_URL =
-//                    "http://www.google.com/ping?";
-
-            // a default FORECAST_BASE_URL
+            //  FORECAST_BASE_URL that will return an empty result
             final String FORECAST_BASE_URL =
-                    "http://api.openweathermap.org/data/2.5/forecast/daily?";
+                    "http://www.google.com/ping?";
+
+//            // a default FORECAST_BASE_URL
+//            final String FORECAST_BASE_URL =
+//                    "http://api.openweathermap.org/data/2.5/forecast/daily?";
             final String QUERY_PARAM = "q";
             final String FORMAT_PARAM = "mode";
             final String UNITS_PARAM = "units";
