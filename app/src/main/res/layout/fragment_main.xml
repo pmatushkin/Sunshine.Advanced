@@ -34,7 +34,9 @@
         android:text="@string/empty_forecast_list"
         android:gravity="center_horizontal"
         android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_horizontal_margin"
         android:paddingBottom="@dimen/activity_horizontal_margin" />
 </FrameLayout>
