@@ -98,15 +98,11 @@ public class ForecastAdapter extends CursorAdapter {
             case VIEW_TYPE_TODAY: {
                 // Get weather icon
                 fallbackIconId = Utility.getArtResourceForWeatherCondition(weatherId);
-//                viewHolder.iconView.setImageResource(Utility.getArtResourceForWeatherCondition(
-//                        weatherId));
                 break;
             }
             default: {
                 // Get weather icon
                 fallbackIconId = Utility.getIconResourceForWeatherCondition(weatherId);
-//                viewHolder.iconView.setImageResource(Utility.getIconResourceForWeatherCondition(
-//                        weatherId));
                 break;
             }
         }
