@@ -21,8 +21,14 @@
     <color name="grey_700">#646464</color>
     <color name="black">#000000</color>
 
-    <color name="sunshine_light_blue">#ff64c2f4</color>
-    <color name="sunshine_blue">#ff1ca8f4</color>
-    <color name="sunshine_dark_blue">#0288D1</color>
+    <!--<color name="sunshine_light_blue">#ff64c2f4</color>-->
+    <!--<color name="sunshine_blue">#ff1ca8f4</color>-->
+    <!--<color name="sunshine_dark_blue">#0288D1</color>-->
+
+    <!-- using the "Light Blue" Material Palette -->
+    <color name="primary">#03A9F4</color>  <!-- 500 former sunshine_blue -->
+    <color name="primary_dark">#0288D1</color>  <!-- 700 former sunshine_dark_blue -->
+    <color name="primary_light">#B3E5FC</color> <!-- 100 former sunshine_light_blue -->
+    <color name="accent">#FFD740</color> <!-- A200 -->
 
 </resources>
