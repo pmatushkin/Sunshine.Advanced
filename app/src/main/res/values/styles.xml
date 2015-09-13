@@ -23,6 +23,12 @@
         <item name="toolbarStyle">@style/Toolbar</item>
     </style>
 
+    <style name="AppTheme.Main" parent="@style/AppTheme">
+    </style>
+
+    <style name="AppTheme.Details" parent="@style/AppTheme">
+    </style>
+
     <!-- Settings activity theme. -->
     <style name="SettingsTheme" parent="AppTheme">
     </style>
